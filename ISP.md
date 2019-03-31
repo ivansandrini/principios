@@ -20,7 +20,7 @@ class RelatorioTorvalds implements GerarRelatorio {
 	}
 }
 ```
-**Preferir** quebrar em interfaces menores, com metodos separados, assim o Cliente escolhe o metodo desejado
+**Solução** quebrar em interfaces menores, com metodos separados, assim o Cliente escolhe o metodo desejado
 
 ```java
 interface GerarRelatorioProprietario {

@@ -25,7 +25,7 @@ public class Projeto {
 }
 ```
 
-**Preferir** detalhes baseado em abstrações
+**Solução** detalhes baseado em abstrações
 
 ```java
 public interface Desenvolvedor {

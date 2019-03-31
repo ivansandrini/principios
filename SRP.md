@@ -17,22 +17,22 @@ class ManipuladorDeArquivo {
 }
 ```
 
-**Preferir** dividir responsabilidades em classes menores
+Boa pratica dividir responsabilidades em classes menores
 
 ```java
-class LeitorDeConteudo {
+class LeitorDeArquivo {
 	void ler(InputStream inputStream) {
 		/** ... **/
 	}
 }
 
-class EscritorDeConteudo {
+class EscritorDeArquivo {
 	void escrever(OutputStream outputStream) {
 		/** ... **/
 	}
 }
 
-class VerificadorDeExistencia {
+class VerificadorDeArquivo {
 	boolean existe() {
 		/** ... **/
 	}
