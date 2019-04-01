@@ -48,30 +48,29 @@ public class notaFiscalService{
 
 Separar as responsabilidade em classes com uma única responsabilidade.
 
+Classe responsável por emitir e cancelar a nota fiscal
 ```Java
-//Classe responsável por emitir e cancelar a nota fiscal
 public class notaFiscalService{
     public void emite(Nota nota);
     public void cancela(nota nota);
 }
 ```
-
+Classe responsável por validar a nota fiscal
 ```Java
-//Classe responsável por validar a nota fiscal
 public class notaFiscalValidate{
     public void valida(Nota nota);
 }
 ```
 
+Classe responsável por gerar relatórios
 ```Java
-//Classe responsável por gerar relatórios
 public class notaFiscalReport{
     public void imprime(Nota nota);
 }
 ```
 
+Classe responsável pelas ações no banco de dados 
 ```Java
-//Classe responsável pelas ações no banco de dados 
 public class notaFiscalRepository{
     public void salva(Nota nota);
 }
