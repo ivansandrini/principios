@@ -13,7 +13,7 @@ O princípio de segregação de interfaces trata sobre interfaces bem definidas 
 Para entender a intenção deste princípio, veja a seguinte estrutura de código (retirada da mesma coluna [1]):
 
 <p align="center">
-  <img src="assets/isp-violation.png" />
+  <img src="https://user-images.githubusercontent.com/15656072/55520381-6f87f980-5652-11e9-914f-f8180e834d09.png" />
 </p>
 
 Nesta imagem, podemos ver que todas as implementações de _Transaction_ dependem da interface de _UI_ que é abstrata, no entanto,  cada _Transaction_ utiliza somente parte das funcionalidades de _UI_ - configurando uma violação do princípio de Segregação de Interfaces.
@@ -25,7 +25,7 @@ Este relacionamento funciona mas irá nos trazer problemas: qualquer mudança fe
 A solução sugerida por Robert C. Martin é segregar as interfaces de _UI_ em componentes menores e especializados.
 
 <p align="center">
-  <img src="assets/isp-violation-fix.png" />
+  <img src="https://user-images.githubusercontent.com/15656072/55520392-80d10600-5652-11e9-906c-ea0e7bfb7ce8.png" />
 </p>
 
 Neste novo formato, estes componentes específicos para cada tipo de _Transaction_ são muito mais estáveis, e a possibilidade de mudanças neste contrato é menor pois são utilizadas unicamente no relacionamento com esta entidade. Os componentes que dependem destas _Transaction_ estão acoplando-se com uma classe mais estável que eles!
@@ -43,8 +43,9 @@ TBD
 
 ## Referências
 
-[1] R. C. Martin, “Interface segregation principle,” Google Docs. [Online]. Available: https://drive.google.com/file/d/0BwhCYaYDn8EgOTViYjJhYzMtMzYxMC00MzFjLWJjMzYtOGJiMDc5N2JkYmJi/view. [Accessed: 24-Mar-2019].
-[2] M. Fowler, “Role Interfaces,” martinfowler.com. [Online]. Available: https://martinfowler.com/bliki/RoleInterface.html. [Accessed: 02-Apr-2019].
+\[1\] R. C. Martin, “Interface segregation principle,” Google Docs. [Online]. Available: https://drive.google.com/file/d/0BwhCYaYDn8EgOTViYjJhYzMtMzYxMC00MzFjLWJjMzYtOGJiMDc5N2JkYmJi/view. [Accessed: 24-Mar-2019].
+
+\[2\] M. Fowler, “Role Interfaces,” martinfowler.com. [Online]. Available: https://martinfowler.com/bliki/RoleInterface.html. [Accessed: 02-Apr-2019].
 
 [1]: https://drive.google.com/file/d/0BwhCYaYDn8EgOTViYjJhYzMtMzYxMC00MzFjLWJjMzYtOGJiMDc5N2JkYmJi/view
 [2]: https://martinfowler.com/bliki/RoleInterface.html
