@@ -2,7 +2,7 @@
 
 ## 1. Motivação
 
-
+Este princípio garante a estrutura necessária para e pela aplicação do OCP e do LSP, a abstração e controle das dependẽncias de um módulo.
 
 ## 2. Descrição
 
