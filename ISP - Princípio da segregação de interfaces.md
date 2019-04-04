@@ -1,10 +1,10 @@
 # Princípio da segregação de interfaces
 
-## Motivação
+## 1. Motivação
 
 O princípio da segregação de interfaces foca em reduzir o impacto de mudanças, através da utilização de interfaces especializadas e de grande estabilidade.
 
-## Descrição
+## 2. Descrição
 
 O princípio de segregação de interfaces trata sobre interfaces bem definidas e coesas, que atendem clientes específicos. Este princípio é definido por Robert C. Martin na coluna [_Engineering Notebook_ do _The C++ Report_][1] como:
 
@@ -37,11 +37,11 @@ A visão técnica apresentada por Robert C. Martin é essencial para identificar
 Ao entender o relacionamento entre provedor e consumidor, podemos construir interfaces mais coesas se focarmos em modelar as interações entre eles. Sempre que uma interface carregar mais funcionalidades do que as utilizadas por uma interação, temos uma violação do Princípio de Segregação de Interfaces.
 
 
-## Exemplos
+## 3. Exemplos
 
 TBD
 
-## Referências
+## 4. Referências
 
 \[1\] R. C. Martin, “Interface segregation principle,” Google Docs. [Online]. Available: https://drive.google.com/file/d/0BwhCYaYDn8EgOTViYjJhYzMtMzYxMC00MzFjLWJjMzYtOGJiMDc5N2JkYmJi/view. [Accessed: 24-Mar-2019].
 
@@ -50,7 +50,7 @@ TBD
 [1]: https://drive.google.com/file/d/0BwhCYaYDn8EgOTViYjJhYzMtMzYxMC00MzFjLWJjMzYtOGJiMDc5N2JkYmJi/view
 [2]: https://martinfowler.com/bliki/RoleInterface.html
 
-## Colaboradores
+## 5. Colaboradores
 
 - Felipe Cesar Crestani
 - Miguel Fontes
