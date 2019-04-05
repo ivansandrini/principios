@@ -2,20 +2,17 @@
 
 ## 1. Motivação
 
-O princípio da responsabilidade única foi oficialmente citado pela primeira vez no artigo "Design Principles and Design Patterns" do Robert C Martin (Uncle Bob) [1]
+O princípio da responsabilidade única foi oficialmente citado pela primeira vez no artigo [Design Principles and Design Patterns de Robert C Martin](https://fi.ort.edu.uy/innovaportal/file/2032/1/design_principles.pdf).
 
-É considerado um dos principais princípios do SOLID, pois se não aplicado não é possível aplicar os outros princípios.
+ É considerado um dos princípios mais importantes da orientação a objetos, pois sem sua aplicação os demais princípíos se tornam inviáveis.
 
 ## 2. Descrição
 
 O princípio da responsabilidade única pode ser definido como:
 
-```
-Cada classe deve ter uma única responsabilidade.
-```
+> Cada classe deve ter uma única responsabilidade.
 
-Uma classe deve ter um, apenas um, motivo para ser modificada. 
-Se você tem mais de um motivo para alterar a classe, provavelmente a classe tem mais de um responsabilidade.
+Uma classe deve ter um, apenas um, motivo para ser modificada. Se tiver mais de um motivo para a classe ser alterada, provavelmente a classe tem mais de um responsabilidade, tornando-a desconexa (sem coesão).
 
 Exemplos de responsabilidades que devem ser separadas:
 - Persistence
@@ -32,49 +29,56 @@ Exemplos de responsabilidades que devem ser separadas:
 
 3.1 O que não fazer
 
-A classe abaixo NotaFiscalService tem várias responsabilidades como: emitir, validar, imprimir, cancelar e salvar a nota fiscal. Isso fere o princípio de uma classe ter uma única responsabilidade, e deixar o código complexo com muitas linhas e cria uma grande quantidade de depêndencias de classes como: acesso a banco, geração de relatórios, regras de negócio( validação ).
+A classe abaixo ManipuladorDeArquivo tem várias responsabilidades como: validar, ler e escrever. Isso fere o princípio de uma classe ter uma única responsabilidade, e acaba deixando o código complexo e com muitas linhas. Outro efeito indesejado é o grande acoplamento e depêndencia entre as classes.
 
-```Java
-public class notaFiscalService{
+## Violando o Princípio de Responsabilidade Unica
+Classe tem muitas responsabilidades:
 
-    public void emite(Nota nota);
-    public void valida(Nota nota);
-    public void cancela(Nota nota);
-    public void imprime(Nota Nota);
-    public void salva(Nota nota);
-} 
-```
-3.2 O que fazer
+```java
+class ManipuladorDeArquivo {
+	boolean existe() {
+		/** ... **/
+	}
 
-Separar as responsabilidade em classes com uma única responsabilidade.
+	void ler(InputStream inputStream) {
+		/** ... **/
+	}
 
-Classe responsável por emitir e cancelar a nota fiscal
-```Java
-public class notaFiscalService{
-    public void emite(Nota nota);
-    public void cancela(nota nota);
-}
-```
-Classe responsável por validar a nota fiscal
-```Java
-public class notaFiscalValidate{
-    public void valida(Nota nota);
+	void escrever(OutputStream outputStream) {
+		/** ... **/
+	}
 }
 ```
 
-Classe responsável por gerar relatórios
-```Java
-public class notaFiscalReport{
-    public void imprime(Nota nota);
-}
-```
+Problemas ao utilizar uma classe desconexa:
 
-Classe responsável pelas ações no banco de dados 
-```Java
-public class notaFiscalRepository{
-    public void salva(Nota nota);
+- Dificuldade no reuso de suas responsabilidades;
+- Dificuldades na manutenção (dificuldade em manter e/ou evoluir por conta do excesso de responsabilidades);
+- Aumento na rigidez e fragilidade: quando alterar uma responsabilidade, outra pode ser comprometida;
+- Alto acoplamento da classe.
+
+Boa pratica dividir responsabilidades em classes menores:
+
+```java
+class LeitorDeArquivo {
+	void ler(InputStream inputStream) {
+		/** ... **/
+	}
 }
-```
+
+class EscritorDeArquivo {
+	void escrever(OutputStream outputStream) {
+		/** ... **/
+	}
+}
+
+class VerificadorDeArquivo {
+	boolean existe() {
+		/** ... **/
+	}
+}
+``` 
+
 Assim temos um código bem mais coeso, com baixo acoplamento e de fácil manutenção.
 
 ## 4. Referências

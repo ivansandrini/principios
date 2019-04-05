@@ -1,8 +1,8 @@
-# Princípio da Substituição de Liskov
+# LSP - Princípio da Substituição de Liskov
 
 ## 1. Motivação
 
-O princípio da substituiçao de Liskov leva o nome da sua criadora Barbara Liskov, que o apresentou no artigo "Family Values: A Behavioral Notion of Subtyping" [1].
+O princípio da substituiçao de Liskov leva o nome da sua criadora Barbara Liskov, e foi apresentado no artigo "Family Values: A Behavioral Notion of Subtyping" [1].
 
 O princípo se tornou popular quando foi amplamente usado por Robert Martin em seus livros como Clean Code[2] e Refactoring [3].
 
@@ -10,33 +10,64 @@ O princípo se tornou popular quando foi amplamente usado por Robert Martin em s
 
 O princípio da Substituição de Liskov pode ser definido como
 
-```
-Uma classe base deve poder ser substituída pela sua classe derivada.
-```
-Uma subclasse deve sobrescrever os métodos da superclasse de forma que a funcionalidade continue a mesma.
+> Uma classe base deve poder ser substituída pela sua classe derivada.
 
+Ja a definição de Robert C. Martin define como:
+
+> Subtipos devem ser substituíveis pelos seus tipos base.
+
+Ou seja, uma subclasse deve sobrescrever os métodos da superclasse de forma que a funcionalidade continue a mesma.
 
 
 ## 3. Exemplos
 
-O exemplo mais simples da violaçao do LSP é quando uma classe herda métodos que alterem a funcionalidade de forma errada como o exemplo abaixo:
+Ocorre uma violaçao do LSP quando uma classe herda métodos que alterem a funcionalidade da herdada como o exemplo abaixo:
 
-```Java
-public class Retangulo {
-    void altura(int altura);
-    void largura(int largura);
+### Violando o Princípio de Liskov
+
+Abstração incorreta
+```java
+class MeioDeTransporte {
+	double obtemVelocidade(){}
+	void ligaMotor(){}
+}
+
+class Carro extends MeioDeTransporte {
+	@Override 
+    void ligaMotor(){}	
 }
 ```
 
-```Java
-public class Quadrado extends Retangulo {
-    @Override 
-    void altura(int altura);
-    @Override 
-    void largura(int largura);
+Ainda passa
+```java
+class BicicletaMotorizada extends MeioDeTransporte {
+   @Override 
+   void ligaMotor(){}	
 }
 ```
-Uma forma fácil de identificar a violaçao de LSP substituindo o conceito de herença por "É um". Onde no exemplo temos "O quadrado <b>é um</b> retangulo".
+
+Agora pegou...
+```java
+class Bicicleta extends MeioDeTransporte {
+   @Override 
+   void ligaMotor(){}	
+}
+```
+
+**Solução** adicionar mais um nivel de abstração
+
+```java
+class MeioDeTransporte {
+	double obtemVelocidade(){}
+}
+class MeioDeTransporteAMotor extends MeioDeTransporte {
+	void ligaMotor(){}
+}
+class MeioDeTransporteSemMotor extends MeioDeTransporte {
+}
+```
+
+Uma forma fácil de identificar a violaçao de LSP é trocar o conceito de herança por "É um", onde no exemplo temos "A bicicleta é um meio de transporte sem motor".
 
 Apesar de na vida real um quadrado ser um retangulo, na programaçao orientada a objetos não é uma verdade absoluta, pois se alterarmos somente a largura de um quadrado estamos violando o LSP.
 
