@@ -14,7 +14,7 @@ Isto significa que deve ser possível alterar o comportamento interno de uma cla
 
 Tenha em mente que nenhum programa pode estar 100% fechado para mudanças e, por isso, a seleção das abstrações deve ser estratégico: deve-se identificar os pontos com a maior probabilidade de mudança. Ao preparar estes pontos cruciais para serem estendidos, ganhamos velocidade ao incluir novas funcionalidade.
 
-Em [Principles of Package Design](2), Matthias Noback descreve um interssante exemplo. Considere uma aplicação que converte um input em formato Json, XML ou Yaml. Poderíamos ter uma estrutura da seguinte forma:
+Em [Principles of Package Design](2), Matthias Noback descreve um interessante exemplo. Considere uma aplicação que converte um input em formato Json ou XML:
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/15656072/55597899-50f33280-5726-11e9-881f-be4f4d1329a3.png" />
@@ -26,7 +26,7 @@ Aqui, a classe `GenericEncoder` está acoplada ao `JsonEncoder` e ao `XmlEncoder
   <img src="https://user-images.githubusercontent.com/15656072/55597903-52245f80-5726-11e9-8027-be9eaf2c11c0.jpg" />
 </p>
 
-Com a introdução desta abstração, os contratos de cada `Encoder` torna-se estável: a classe `GenericEncoder` poderá interagir com qualquer `Encoder` da mesma forma. No entanto, ainda ficamos com o problema de instanciar cada um dos `Encoder`. Devemos então, adicionar uma nova abstração para representar um factory de `Encoder`.
+Com a introdução da abstração `EncoderInterface`, o contrato da interação com cada `Encoder` torna-se estável: a classe `GenericEncoder` poderá interagir com qualquer `Encoder` da mesma forma, e isto possibilitou a criação do `YamlEncoder`.. No entanto, ainda ficamos com o problema de instanciar cada um dos `Encoder`. Devemos então, adicionar uma nova abstração para delegar a responsabilidade de construção de instâncias de acordo com o formato em processamento:
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/15656072/55597906-53558c80-5726-11e9-9262-9cba398e8db9.jpg" />
