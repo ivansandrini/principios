@@ -27,12 +27,9 @@ Exemplos de responsabilidades que devem ser separadas:
 
 ## 3. Exemplos
 
-3.1 O que não fazer
+#### Violando o Princípio de Responsabilidade Unica
 
 A classe abaixo ManipuladorDeArquivo tem várias responsabilidades como: validar, ler e escrever. Isso fere o princípio de uma classe ter uma única responsabilidade, e acaba deixando o código complexo e com muitas linhas. Outro efeito indesejado é o grande acoplamento e depêndencia entre as classes.
-
-## Violando o Princípio de Responsabilidade Unica
-Classe tem muitas responsabilidades:
 
 ```java
 class ManipuladorDeArquivo {
